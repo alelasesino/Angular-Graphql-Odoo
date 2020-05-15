@@ -7,7 +7,6 @@ import { LoginModule } from './login/login.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuModule } from './menu/menu.module';
-import { InventoryModule } from './inventory/inventory.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { InventoryModule } from './inventory/inventory.module';
     LoginModule,
     GraphQLModule,
     HttpClientModule,
-    MenuModule,
-    InventoryModule
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
