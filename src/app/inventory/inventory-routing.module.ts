@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ReceptionComponent } from './components/reception/reception.component';
 
 
 const routes: Routes = [
-  // {path: 'menu', pathMatch: 'full', component: MenuComponent}
+  {path: 'reception', pathMatch: 'full', component: ReceptionComponent}
 ];
 
 @NgModule({

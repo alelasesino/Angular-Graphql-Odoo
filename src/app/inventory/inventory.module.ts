@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InventoryRoutingModule } from './inventory-routing.module';
+import { ReceptionComponent } from './components/reception/reception.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ReceptionComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule
