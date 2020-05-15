@@ -1,0 +1,43 @@
+.card-custom {
+    border: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+    color: white;
+}
+
+.row-height {
+    height: 100%;
+}
+
+.column-custom {
+    padding: 0;
+    cursor: pointer;
+}
+
+.producto {
+    cursor: pointer;
+    width: 500px !important;
+    height: 500px !important;
+}
+
+
+/*.modal-cuerpo {
+    width: 1000px;
+}
+
+.cuerpo {
+    height: 150px;
+    max-height: 150px;
+    min-height: 150px;
+}*/
+
+
+/*.dialogo {
+    width: 2200px !important;
+    height: 800px !important;
+}*/
