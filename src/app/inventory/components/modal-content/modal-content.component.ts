@@ -16,8 +16,8 @@ export class ModalContentComponent implements OnInit {
   constructor(private activeModal: NgbActiveModal) { 
 
     this.config = {
-      'title': 'Titulo',
-      'display_name': 'name'
+      title: 'Titulo',
+      display_name: 'name'
     }
 
   }

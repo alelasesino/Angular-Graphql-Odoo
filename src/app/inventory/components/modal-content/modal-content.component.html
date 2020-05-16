@@ -1,49 +1,21 @@
-<!-- <div class="row justify-content-between row-height" style="border: 1px solid red">
-
-    <div *ngFor="let data of datas" class="col-md-3 col-sm-12" (click)="activeModal.close(data)">
-
-
-        <h1> {{data[display_field]}} </h1>
-
-    </div>
-
-</div> -->
 <div class="modal-header">
     <h5 class="modal-title"> {{ config.title }} </h5>
 </div>
 <div class="modal-body">
     <div class="container">
-
         <ng-container *ngFor="let matrix of datas; let x = index">
-
             <div class="row mb-3">
-
                 <ng-container *ngFor="let data of matrix; let z = index">
-
                     <div class="col-sm-12 col-md-6 col-lg-3" (click)="activeModal.close(data)" style="border: 0px solid;">
-
                         <img *ngIf="hasImage" class="card-img-top" src="https://s28943.pcdn.co/wp-content/uploads/2019/09/placeholder.jpg" alt="Card image">
-
                         <div class="card">
-                            <div class="card-body" [ngClass]="{'p-5': !hasImage, 'text-center': !hasImage}">
+                            <div class="card-body" [ngClass]="{'pb-5 pt-5 text-center': !hasImage}">
                                 <h2> {{ data[config.display_name] }} </h2>
                             </div>
                         </div>
-
                     </div>
-
                 </ng-container>
-
             </div>
-
-
-
-
         </ng-container>
-
-
-        <!-- [ngClass]=" {'row': i % 3 == 0, 'justify-content-center': i % 3 == 0} " -->
-
-
     </div>
 </div>
