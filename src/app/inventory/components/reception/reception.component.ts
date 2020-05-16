@@ -17,7 +17,7 @@ export class ReceptionComponent implements OnInit {
   openFincaModal(){
 
     const modalRef = this.modalService.open(ModalContentComponent, { size: 'xl', centered: true });
-    modalRef.componentInstance.display_field = "nombre"
+    modalRef.componentInstance.config = {'title': 'Productos', 'display_name': 'nombre'}
     modalRef.componentInstance.datas = [
       {'nombre': 'ale'},
       {'nombre': 'manu'},
