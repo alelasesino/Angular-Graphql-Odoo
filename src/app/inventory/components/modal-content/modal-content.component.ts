@@ -8,17 +8,33 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalContentComponent implements OnInit {
 
-  @Input() public datas: any[];
-  @Input() public display_field: string = "name";
+  @Input() public datas: object[];
+  @Input() public config: object;
 
-  private dataMatrix;
+  private hasImage: boolean;
 
-  constructor(private activeModal: NgbActiveModal) { }
+  constructor(private activeModal: NgbActiveModal) { 
+
+    this.config = {
+      'title': 'Titulo',
+      'display_name': 'name'
+    }
+
+  }
 
   ngOnInit() {
 
+    this.checkImage();
+
     const MAX_COLUMNS = 4;
-    this.dataMatrix = this.listToMatrix(this.datas, MAX_COLUMNS)
+    this.datas = this.listToMatrix(this.datas, MAX_COLUMNS);
+
+  }
+
+  private checkImage(){
+
+    if(this.datas.length > 0) 
+      this.hasImage = 'image' in this.datas[0]
 
   }
 
