@@ -9,3 +9,9 @@ body {
     width: 100%;
     margin: 0 auto;
 }
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
