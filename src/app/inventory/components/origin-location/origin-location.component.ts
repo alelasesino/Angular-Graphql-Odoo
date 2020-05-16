@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 
 @Component({
   selector: 'app-origin-location',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OriginLocationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
+  }
+
+  openFincaModal(){
+
+    const modalRef = this.modalService.open(ModalContentComponent, { size: 'xl', centered: true });
+    modalRef.componentInstance.config = {'title': 'Fincas', 'display_name': 'name'}
+    modalRef.componentInstance.datas = [
+      {'nombre': 'ale'},
+      {'nombre': 'manu'},
+      {'nombre': 'lelazo'},
+      {'nombre': 'lelazo'},
+      {'nombre': 'lelazo'},
+      {'nombre': 'lelazo'},
+      {'nombre': 'lelazo'},{'nombre': 'nombre'},{'nombre': 'lelazo'},{'nombre': 'lelazo'}
+    ]
+
+    modalRef.result.then(result => console.log(result) , dismiss => {});
+
   }
 
 }
