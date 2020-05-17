@@ -34,7 +34,7 @@ export class ModalContentComponent implements OnInit {
   private checkImage(){
 
     if(this.datas.length > 0) 
-      this.hasImage = 'image' in this.datas[0]
+      this.hasImage = 'image' in this.datas[0];
 
   }
 
