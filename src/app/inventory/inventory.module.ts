@@ -8,10 +8,11 @@ import { ModalContentComponent } from './components/modal-content/modal-content.
 import { OriginLocationComponent } from './components/origin-location/origin-location.component';
 import { DataTableComponent, NgbdSortableHeader } from './components/data-table/data-table.component';
 import { RegisterReceptionComponent } from './components/register-reception/register-reception.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 
 @NgModule({
-  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent],
+  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent, AddProductComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
