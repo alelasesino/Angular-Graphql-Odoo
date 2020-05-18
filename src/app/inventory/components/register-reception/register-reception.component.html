@@ -1,0 +1,52 @@
+<div class="container-fluid h-100" style="overflow: hidden;">
+
+    <div class="row mt-3 mb-3">
+
+        <div class="col-md-6 col-sm-12">
+            <div class="card h-100">
+                <div class="card-body">
+
+                    <div class="row h-50">
+
+                        <div class="col-sm-12 col-md-12 col-lg-2 content-left">
+                            <h5 class="card-title h3">Finca</h5>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-10">
+                            <h5 class="card-title h2">Finca #1</h5>
+                        </div>
+                    </div>
+
+                    <div class="row h-50">
+
+                        <div class="col-sm-12 col-md-2 content-left">
+                            <h5 class="card-title h3">Parcela</h5>
+                        </div>
+
+                        <div class="col-sm-12 col-md-10">
+                            <h5 class="card-title h2">Parcela #1</h5>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title h2">Productos</h5>
+                    <a href="#" class="btn btn-success btn-lg btn-block p-4" routerLink="/reception/5/5/register">Agregar producto</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12 table-wrapper-scroll-y table-responsive">
+            <app-data-table [headers]="headers" [data]="data"></app-data-table>
+        </div>
+    </div>
+</div>
