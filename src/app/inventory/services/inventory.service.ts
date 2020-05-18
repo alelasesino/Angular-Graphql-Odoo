@@ -32,7 +32,32 @@ export class InventoryService {
     }
     `;
 
-    this.query = this.apollo.watchQuery({query: FARM_QUERY});
+    return this.doSimpleQuery(FARM_QUERY);
+
+  }
+
+  public getProducts(){
+
+    const PRODUCT_QUERY = gql`
+    {
+      products {
+        id
+        display_name
+        code
+        barcode
+        categ_id
+        image
+      }
+    }    
+    `;
+
+    return this.doSimpleQuery(PRODUCT_QUERY);
+
+  }
+
+  private doSimpleQuery(query){
+
+    this.query = this.apollo.watchQuery({query: query});
 
     return this.query.valueChanges;
 
