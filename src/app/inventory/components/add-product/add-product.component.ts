@@ -23,7 +23,7 @@ export class AddProductComponent implements OnInit {
     this.sub = this.inventoryService.getProducts().subscribe(async result => {
 
       try {
-        console.log(result.data.products[0]);
+        
         this.product = await this.openModal({title: 'Productos', display_name: 'code'}, result.data.products);
 
       } catch(err) {}
