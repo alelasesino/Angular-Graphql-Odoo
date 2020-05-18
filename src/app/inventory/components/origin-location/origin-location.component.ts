@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { InventoryService } from '../../services/inventory.service';
@@ -8,10 +8,12 @@ import { InventoryService } from '../../services/inventory.service';
   templateUrl: './origin-location.component.html',
   styleUrls: ['./origin-location.component.scss']
 })
-export class OriginLocationComponent implements OnInit {
+export class OriginLocationComponent implements OnInit, OnDestroy {
 
-  private farm: any;
-  private parcel: any;
+  public farm: any = "holi";
+  public parcel: any = "hola";
+
+  private sub;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
 
@@ -20,7 +22,7 @@ export class OriginLocationComponent implements OnInit {
 
   openFincaModal(){
 
-    this.inventoryService.getFarms().subscribe(async result => {
+    this.sub = this.inventoryService.getFarms().subscribe(async result => {
 
       try {
 
@@ -32,7 +34,7 @@ export class OriginLocationComponent implements OnInit {
 
       } catch(err) {}
 
-    });   //TODO DESUSCRIBIR ESTE SUBSCRIBER
+    });
 
   }
 
@@ -44,6 +46,13 @@ export class OriginLocationComponent implements OnInit {
 
     return modalRef.result;
 
+  }
+
+  ngOnDestroy(){
+
+    if(this.sub)
+      this.sub.unsubscribe();
+      
   }
 
 }
