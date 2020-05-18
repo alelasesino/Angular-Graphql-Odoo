@@ -9,10 +9,11 @@ import { OriginLocationComponent } from './components/origin-location/origin-loc
 import { DataTableComponent, NgbdSortableHeader } from './components/data-table/data-table.component';
 import { RegisterReceptionComponent } from './components/register-reception/register-reception.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 
 @NgModule({
-  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent, AddProductComponent],
+  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent, AddProductComponent, SafeHtmlPipe],
   imports: [
     CommonModule,
     InventoryRoutingModule,
