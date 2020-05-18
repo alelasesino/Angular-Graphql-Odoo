@@ -9,13 +9,16 @@ import { Observable } from 'apollo-link';
 })
 export class RegisterReceptionComponent implements OnInit {
 
-  headers = {name: 'Nombre', time: 'Hora'};
+  headers = {code: 'Referencia', name: 'Articulo', quantity: 'Cantidad'};
   data = [
-    {name: 'Mi nombre', time: '05:00'},
-    {name: 'Mi as', time: '06:00'},
-    {name: 'Mi ff', time: '07:00'},
-    {name: 'Mi aa', time: '08:00'},
-    {name: 'Mi fffb', time: '09:00'}
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
+    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'}
   ]
 
   state: any;
