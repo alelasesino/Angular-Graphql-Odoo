@@ -3,14 +3,14 @@
     <div class="row mt-3 mb-3">
 
         <div class="col-md-6 col-sm-12">
-            <app-origin-location></app-origin-location>
+            <app-origin-location #origin></app-origin-location>
         </div>
 
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title h2">Recepción</h5>
-                    <a href="#" class="btn btn-secondary btn-lg btn-block p-4">Registrar recepción</a>
+                    <button class="btn btn-secondary btn-lg btn-block p-4" (click)="navigateToRegister()">Registrar recepción</button>
                 </div>
             </div>
         </div>

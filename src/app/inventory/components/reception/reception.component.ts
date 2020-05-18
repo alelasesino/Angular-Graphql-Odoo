@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { OriginLocationComponent } from '../origin-location/origin-location.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reception',
@@ -16,9 +18,16 @@ export class ReceptionComponent implements OnInit {
     {name: 'Mi fffb', time: '09:00'}
   ]
 
-  constructor() { }
+  @ViewChild('origin', {static: true}) origin: OriginLocationComponent;
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    //console.log(this.origin);
+  }
+
+  navigateToRegister(){
+    this.router.navigateByUrl('reception/register', {state: {farm: "Finca", parcel: "Parcela"}});
   }
 
 }
