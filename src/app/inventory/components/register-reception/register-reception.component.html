@@ -1,15 +1,6 @@
 <div class="container-fluid h-100" style="overflow: hidden;">
 
     <div class="row mt-3">
-        <div class="col-sm-12 col-md-6">
-            <button class="btn btn-info btn-lg w-100 p-4 mb-3">Confirmar</button>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <button class="btn btn-danger btn-lg w-100 p-4 mb-3" routerLink="..">Cancelar</button>
-        </div>
-    </div>
-
-    <div class="row">
 
         <div class="col-md-6 col-sm-12">
             <div class="card h-100">
@@ -51,6 +42,15 @@
     <div class="row mt-3">
         <div class="col-12 table-wrapper-scroll-y table-responsive">
             <app-data-table [headers]="headers" [data]="data"></app-data-table>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-info btn-lg w-100 p-4 mb-3">Confirmar</button>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <button class="btn btn-danger btn-lg w-100 p-4 mb-3" routerLink="..">Cancelar</button>
         </div>
     </div>
 
