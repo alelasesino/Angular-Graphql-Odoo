@@ -1,0 +1,40 @@
+.card-custom {
+    border: none;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0px 20px 0px;
+    color: white;
+}
+
+.btn:focus,
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.btn-number {
+    background-color: #f5d442;
+    border-radius: 0px;
+    color: white;
+}
+
+.btn-number h1 {
+    padding: 40px;
+}
+
+.btn-border {
+    border-radius: 0px;
+}
+
+.row-height {
+    height: 100%;
+}
+
+.column-custom {
+    padding: 0;
+    cursor: pointer;
+}

@@ -10,15 +10,16 @@ import { DataTableComponent, NgbdSortableHeader } from './components/data-table/
 import { RegisterReceptionComponent } from './components/register-reception/register-reception.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { KeypadModalComponent } from './components/keypad-modal/keypad-modal.component';
 
 
 @NgModule({
-  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent, AddProductComponent, SafeHtmlPipe],
+  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent, AddProductComponent, SafeHtmlPipe, KeypadModalComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
     NgbModule
   ],
-  entryComponents:[ModalContentComponent]
+  entryComponents:[ModalContentComponent, KeypadModalComponent]
 })
 export class InventoryModule { }
