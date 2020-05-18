@@ -7,10 +7,11 @@ import { ReceptionComponent } from './components/reception/reception.component';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { OriginLocationComponent } from './components/origin-location/origin-location.component';
 import { DataTableComponent, NgbdSortableHeader } from './components/data-table/data-table.component';
+import { RegisterReceptionComponent } from './components/register-reception/register-reception.component';
 
 
 @NgModule({
-  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader],
+  declarations: [ReceptionComponent, ModalContentComponent, OriginLocationComponent, DataTableComponent, NgbdSortableHeader, RegisterReceptionComponent],
   imports: [
     CommonModule,
     InventoryRoutingModule,
