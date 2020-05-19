@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { InventoryService } from '../../services/inventory.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { KeypadModalComponent } from '../keypad-modal/keypad-modal.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -11,9 +12,9 @@ import { KeypadModalComponent } from '../keypad-modal/keypad-modal.component';
 })
 export class AddProductComponent implements OnInit {
 
-  private sub;
-  private product;
-  private quantity;
+  @Output('added') added_product = new EventEmitter<object>();
+
+  private sub: Subscription;
   private loading: boolean;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
@@ -32,10 +33,12 @@ export class AddProductComponent implements OnInit {
       try {
         
         const product = await this.openModal({title: 'Productos', display_name: 'code'}, result.data.products);
-        const quantity = await this.openKeypad(product);
+        const quantity = await this.openKeypad(product.display_name);
 
-        this.product = product;
-        this.quantity = quantity;
+        product.quantity = quantity;
+
+        if(quantity > 0)
+          this.added_product.emit(product);
 
       } catch(err) {}
 
@@ -53,10 +56,10 @@ export class AddProductComponent implements OnInit {
 
   }
 
-  openKeypad(product) {
+  openKeypad(title) {
 
     const modalRef = this.modalService.open(KeypadModalComponent, {size: 'xl', centered: true});
-    modalRef.componentInstance.product = product
+    modalRef.componentInstance.title = title
 
     return modalRef.result;
 
