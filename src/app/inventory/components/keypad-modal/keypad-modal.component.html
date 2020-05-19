@@ -2,7 +2,7 @@
     <div class="col-12 column-custom">
         <div class="card h-100" style="border-radius: 0; background-color: rgb(255, 56, 255);">
             <div class="card-body card-custom">
-                <h1>{{product.display_name}}</h1>
+                <h1>{{title}}</h1>
             </div>
         </div>
     </div>
@@ -32,6 +32,6 @@
         <button class="btn btn-warning h-100 w-100 btn-number" (click)="onNumberClick(0)"><h1>0</h1></button>
     </div>
     <div class="col-6 column-custom">
-        <button class="btn btn-success h-100 w-100 btn-border" (click)="activeModal.close({product: product, quantity: display_value})"><h1>ACEPTAR</h1></button>
+        <button class="btn btn-success h-100 w-100 btn-border" (click)="onClose()"><h1>ACEPTAR</h1></button>
     </div>
 </div>

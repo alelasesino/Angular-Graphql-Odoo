@@ -8,7 +8,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class KeypadModalComponent implements OnInit {
 
-  @Input() public product;
+  @Input() public title: string;
 
   display_value: string = "0";
   is_firt_click: boolean = true;
@@ -38,6 +38,10 @@ export class KeypadModalComponent implements OnInit {
   onDeleteClick() {
     this.display_value = "0";
     this.is_firt_click = true;
+  }
+
+  onClose(){
+    this.activeModal.close(Number(this.display_value));
   }
 
 }
