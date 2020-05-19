@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'apollo-link';
+import { DataTableComponent } from '../data-table/data-table.component';
 
 @Component({
   selector: 'app-register-reception',
@@ -9,16 +10,14 @@ import { Observable } from 'apollo-link';
 })
 export class RegisterReceptionComponent implements OnInit {
 
-  headers = {code: 'Referencia', name: 'Articulo', quantity: 'Cantidad'};
-  data = [
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'},
-    {code: '4 KG GRANEL', name: 'Caja de granel', quantity: '251'}
+  @ViewChild('table', {static : true}) table: DataTableComponent;
+
+  private loading: boolean;
+  private headers: object = {code: 'Referencia', display_name: 'Articulo', quantity: 'Cantidad'};
+  private data = [
+    {id: 1, code: '4 KG GRANEL', display_name: 'Caja de granel1', quantity: '251'},
+    {id: 2, code: '4 KG GRANEL', display_name: 'Caja de granel2', quantity: '251'},
+    {id: 3, code: '4 KG GRANEL', display_name: 'Caja de granel3', quantity: '251'}
   ]
 
   state: any;
@@ -27,8 +26,14 @@ export class RegisterReceptionComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(window.history.state);
+    //console.log(window.history.state);
 
   }
+
+  onAddedProduct(product){
+    this.table.addItem(product);
+  }
+
+  confirmReception(){}
 
 }
