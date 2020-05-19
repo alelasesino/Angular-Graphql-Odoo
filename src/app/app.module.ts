@@ -14,11 +14,11 @@ import { MenuModule } from './menu/menu.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     LoginModule,
     GraphQLModule,
     HttpClientModule,
-    MenuModule
+    MenuModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
