@@ -14,6 +14,7 @@ export class AddProductComponent implements OnInit {
   private sub;
   private product;
   private quantity;
+  private loading: boolean;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
 
@@ -22,7 +23,11 @@ export class AddProductComponent implements OnInit {
 
   openProductModal(){
 
+    this.loading = true;
+
     this.sub = this.inventoryService.getProducts().subscribe(async result => {
+
+      this.loading = false;
 
       try {
         

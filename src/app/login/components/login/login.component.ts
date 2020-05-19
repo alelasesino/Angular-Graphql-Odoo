@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   username: string = "";
   password: string = "";
   error_message: string;
+  loading: boolean;
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -30,7 +31,11 @@ export class LoginComponent implements OnInit {
 
   sendLogin(){
 
+    this.loading = true;
+
     this.auth.login(this.username, this.password).subscribe(result => {
+
+      this.loading = false;
 
       if('error' in result){
         this.error_message = "¡Usuario/Contraseña incorrecta!";

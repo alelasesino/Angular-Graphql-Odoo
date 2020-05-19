@@ -12,6 +12,7 @@ export class OriginLocationComponent implements OnInit, OnDestroy {
 
   public farm: any = "holi";
   public parcel: any = "hola";
+  private loading: boolean;
 
   private sub;
 
@@ -22,7 +23,11 @@ export class OriginLocationComponent implements OnInit, OnDestroy {
 
   openFincaModal(){
 
+    this.loading = true;
+
     this.sub = this.inventoryService.getFarms().subscribe(async result => {
+
+    this.loading = false;
 
       try {
 
