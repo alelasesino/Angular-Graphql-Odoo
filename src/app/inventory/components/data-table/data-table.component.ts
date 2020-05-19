@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, Directive, Input, Output, EventEmitter, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChildren, Directive, Input, Output, EventEmitter, QueryList, OnChanges } from '@angular/core';
 
 
 // interface Country {
@@ -80,19 +80,20 @@ export class NgbdSortableHeader {
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.scss']
 })
-export class DataTableComponent implements OnInit{
+export class DataTableComponent implements OnInit {
   
-  countries;
-  objectKeys = Object.keys;
+  private addedItem: boolean;
+  private countries;
+  private objectKeys = Object.keys;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   @Input('headers') header_columns;
-  @Input('data') datas;
+  @Input('data') datas = [];
+  @Input('actions') actions: boolean;
 
   ngOnInit(): void {
     
     console.log(this.header_columns);
-
     this.countries = this.datas;
 
   }
@@ -116,6 +117,31 @@ export class DataTableComponent implements OnInit{
     }
   }
 
+  addItem(item){
+
+    this.datas.push(item);
+    this.addedItem = true;
+
+  }
+
+  removeItem(id){
+    console.log(id)
+    this.datas = this.datas.filter(element => {
+      return element.id !== id
+
+    });
+  }
+
+  ngAfterViewChecked(){
+    
+    if(this.addedItem){
+        document.querySelector('.tabla').scrollBy(0, 10000);
+        this.addedItem = false;
+    }
+
+  }
+
+  
 }
 
 
