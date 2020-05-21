@@ -24,15 +24,9 @@ export class AuthService {
 
   }
 
-  /* 
-  Comprueba si la cookie es una cookie HttpOnly
-  */
   isLogged() {
 
-    const cookie_name = "session_id";
-    document.cookie = cookie_name + "=no_auth;path=/;";
-
-    return document.cookie.indexOf(cookie_name + '=') == -1;
+    return Boolean(localStorage.getItem('logged') || false);
 
   }
 
