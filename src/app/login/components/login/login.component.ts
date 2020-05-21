@@ -33,14 +33,14 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    this.auth.login(this.username, this.password).subscribe(result => {
+    this.auth.login(this.username, this.password).subscribe(({loading, error}) => {
 
-      this.loading = false;
+      this.loading = loading;
 
-      if('error' in result){
+      if(error){
         this.error_message = "¡Usuario/Contraseña incorrecta!";
       } else {
-        console.log(result);
+        localStorage.setItem('logged', 'true');
         this.router.navigate(['/menu']);
       }
 
