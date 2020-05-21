@@ -24,4 +24,21 @@ export class AuthService {
 
   }
 
+  /* 
+  Comprueba si la cookie es una cookie HttpOnly
+  */
+  isLogged() {
+
+    const cookie_name = "session_id";
+
+    const d = new Date();
+    d.setTime(d.getTime() + (1000));
+
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = cookie_name + "=new_value;path=/;" + expires;
+
+    return document.cookie.indexOf(cookie_name + '=') == -1;
+
+  }
+
 }
