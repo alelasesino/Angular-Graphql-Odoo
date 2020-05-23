@@ -14,11 +14,11 @@ export class RegisterReceptionComponent implements OnInit {
   @ViewChild('table', {static : true}) table: DataTableComponent;
 
   private loading: boolean;
-  private headers: object = {code: 'Referencia', display_name: 'Articulo', quantity: 'Cantidad'};
+  private headers: object = {code: 'Referencia', displayName: 'Articulo', quantity: 'Cantidad'};
   private data = [
-    {id: 1, code: '4 KG GRANEL', display_name: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', display_name: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', display_name: 'Caja de granel3', quantity: '251'}
+    // {id: 1, code: '4 KG GRANEL', display_name: 'Caja de granel1', quantity: '251'},
+    // {id: 2, code: '4 KG GRANEL', display_name: 'Caja de granel2', quantity: '251'},
+    // {id: 3, code: '4 KG GRANEL', display_name: 'Caja de granel3', quantity: '251'}
   ]
 
   state: any;
