@@ -14,22 +14,23 @@ export class InventoryService {
   public getFarms(){
     
     const FARM_QUERY = gql`
-    {
-      farms{
+    query Farms {
+      farms {
         id
         name
-        create_date
+        createDate
         description
         code
-        parcels{
+        partnerId
+        parcels {
           id
           name
-          create_date
+          createDate
           number
           description
         }
       }
-    }
+    }    
     `;
 
     return this.doSimpleQuery(FARM_QUERY);
@@ -39,16 +40,16 @@ export class InventoryService {
   public getProducts(){
 
     const PRODUCT_QUERY = gql`
-    {
+    query Products {
       products {
         id
-        display_name
+        displayName
         code
         barcode
-        categ_id
+        categId
         image
       }
-    }    
+    }  
     `;
 
     return this.doSimpleQuery(PRODUCT_QUERY);
@@ -58,21 +59,21 @@ export class InventoryService {
   public getReceptions(){
 
     const RECEPTION_QUERY = gql`
-    query($today: Boolean){
-      receptions(today: $today) {
+    query Receptions {
+      receptions(today: false) {
         id
-        display_name
-        scheduled_date
-        receive_from
+        displayName
+        scheduledDate
+        receiveFrom
         time
-        receive_products {
-          display_name
+        receiveProducts {
           code
+          displayName
           kilos
           lote
         }
       }
-    }          
+    }         
     `;
 
     this.query = this.apollo.watchQuery({query: RECEPTION_QUERY, variables: {today: false}});
