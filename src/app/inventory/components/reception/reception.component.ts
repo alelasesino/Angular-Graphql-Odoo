@@ -28,9 +28,9 @@ export class ReceptionComponent implements OnInit {
 
         const time = reception.time;
 
-        reception.receive_products.forEach(product => {
+        reception.receiveProducts.forEach(product => {
 
-          this.data.push({id: product.id, code: product.code, display_name: product.display_name, time: time, quantity: product.kilos});
+          this.data.push({id: product.id, code: product.code, display_name: product.displayName, time: time, quantity: product.kilos});
 
         });
 
