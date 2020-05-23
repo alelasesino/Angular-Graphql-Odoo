@@ -1,9 +1,8 @@
 <div class="card h-100">
     <div class="card-body">
-        <h5 class="card-title h2">Ubicación de origen</h5>
-        <button [disabled]="loading" class="btn btn-primary btn-lg btn-block p-4" (click)="openFincaModal()">
+        <button [disabled]="loading" class="btn btn-primary btn-lg btn-block" (click)="openFincaModal()">
             <span *ngIf="loading" class="spinner-border spinner-border-sm spinner-big" role="status " aria-hidden="true "></span>
-            Seleccionar ubicación origen
+            {{button_label}}
         </button>
     </div>
 </div>

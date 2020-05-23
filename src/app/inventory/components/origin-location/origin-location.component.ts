@@ -12,8 +12,9 @@ export class OriginLocationComponent implements OnInit, OnDestroy {
 
   public farm: any = "holi";
   public parcel: any = "hola";
-  private loading: boolean;
 
+  private loading: boolean;
+  private button_label: string = "Seleccionar ubicación origen"; //Finca #1 - (Parcela #2)
   private sub;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
@@ -36,6 +37,7 @@ export class OriginLocationComponent implements OnInit, OnDestroy {
         
         this.farm = farm;
         this.parcel = parcel;
+        this.button_label = `${farm.name} - (${parcel.name})`;
 
       } catch(err) {}
 
