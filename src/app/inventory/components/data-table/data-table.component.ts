@@ -81,7 +81,7 @@ export class NgbdSortableHeader {
   styleUrls: ['./data-table.component.scss']
 })
 export class DataTableComponent implements OnInit {
-  
+
   private addedItem: boolean;
   private countries;
   private objectKeys = Object.keys;
@@ -92,7 +92,7 @@ export class DataTableComponent implements OnInit {
   @Input('actions') actions: boolean;
 
   ngOnInit(): void {
-    
+
     console.log(this.header_columns);
     this.countries = this.datas;
 
@@ -121,19 +121,15 @@ export class DataTableComponent implements OnInit {
 
     this.datas.push(item);
     this.addedItem = true;
-
+    
   }
 
   removeItem(id){
-    console.log(id)
-    this.datas = this.datas.filter(element => {
-      return element.id !== id
-
-    });
+    this.datas.splice(id, 1);
   }
 
   ngAfterViewChecked(){
-    
+
     if(this.addedItem){
         document.querySelector('.tabla').scrollBy(0, 10000);
         this.addedItem = false;
@@ -141,7 +137,7 @@ export class DataTableComponent implements OnInit {
 
   }
 
-  
+
 }
 
 

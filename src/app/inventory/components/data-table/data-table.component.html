@@ -16,12 +16,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let country of countries">
+            <tr *ngFor="let country of countries; let i = index">
 
                 <td *ngFor="let key of objectKeys(header_columns)">{{country[key]}}</td>
 
                 <td *ngIf="actions" class="action-column">
-                    <button type="button" class="btn btn-danger btn-block" (click)="removeItem(country.id)">Eliminar</button>
+                    <button type="button" class="btn btn-danger btn-block" (click)="removeItem(i)">Eliminar</button>
                 </td>
                 <!-- <th scope="row">{{ country.id }}</th>
                 <td>
