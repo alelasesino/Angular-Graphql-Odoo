@@ -18,7 +18,6 @@ export class LotService {
 
   }
 
-
   private getWeekNumber(date: Date): number {
 
     date = new Date(+date);
