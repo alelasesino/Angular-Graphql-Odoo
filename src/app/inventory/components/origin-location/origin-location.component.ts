@@ -14,7 +14,7 @@ export class OriginLocationComponent implements OnInit, OnDestroy {
   public parcel: any = "hola";
 
   private loading: boolean;
-  private button_label: string = "Seleccionar ubicación origen"; //Finca #1 - (Parcela #2)
+  private button_label: string = "Seleccionar ubicación origen";
   private sub;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
