@@ -8,21 +8,21 @@ import { InventoryService } from '../../services/inventory.service';
   templateUrl: './reception.component.html',
   styleUrls: ['./reception.component.scss']
 })
-export class ReceptionComponent implements OnInit {
+export class ReceptionComponent {
 
   private headers: object = {code: 'Referencia', display_name: 'Articulo', time: 'Hora', quantity: 'Cantidad'};
+  private lot: string = "LOTE: L01052403";
   private data = [
     //{id: 3, code: '4 KG GRANEL', display_name: 'Caja de granel3', time: '18:00', quantity: '251'}
   ]
 
-  @ViewChild('origin', {static: true}) origin: OriginLocationComponent;
-
   constructor(private service:InventoryService, private router: Router) { }
 
-  ngOnInit() {
-    //console.log(this.origin);
+  refreshReceptionTable(lot) {
+    
+    this.lot = lot
 
-    this.service.getReceptions().subscribe(result => {
+    this.service.getReceptions(lot).subscribe(result => {
 
       result.data.receptions.forEach(reception => {
 
@@ -40,7 +40,7 @@ export class ReceptionComponent implements OnInit {
 
   }
 
-  navigateToRegister(){
+  navigateToRegister() {
     this.router.navigateByUrl('reception/register', {state: {farm: "Finca", parcel: "Parcela"}});
   }
 
