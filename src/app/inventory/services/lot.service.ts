@@ -7,7 +7,7 @@ export class LotService {
 
   getLot(farm, parcel): string {
 
-    farm = String(farm).padStart(2, '0');
+    farm = farm.replace(/0/g, '').padStart(2, '0');
     parcel = String(parcel).padStart(2, '0');
 
     const today = new Date();
