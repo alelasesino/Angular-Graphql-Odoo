@@ -94,7 +94,6 @@ export class DataTableComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.header_columns);
     this.countries = this.datas;
 
   }
