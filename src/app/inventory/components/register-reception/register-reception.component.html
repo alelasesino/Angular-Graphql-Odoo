@@ -1,57 +1,6 @@
 <div class="container-fluid h-100" style="overflow: hidden;">
 
     <div class="row mt-3">
-
-        <!-- <div class="col-md-6 col-sm-12">
-            <div class="card h-100">
-                <div class="card-body">
-
-                    <div class="container-fluid h-100">
-
-                        <div class="row h-100">
-                            <div class="col-6">
-
-                                <div class="row h-50">
-                                    <div class="col-5 content-left">
-                                        <span class="h4">Finca</span>
-                                    </div>
-                                    <div class="col-7">
-                                        <span class="h4">Finca #1</span>
-                                    </div>
-                                </div>
-
-                                <div class="row h-50">
-                                    <div class="col-5 content-left">
-                                        <span class="h4">Parcela</span>
-                                    </div>
-                                    <div class="col-7">
-                                        <span class="h4">Parcela #1</span>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-6">
-
-                                <div class="row h-50">
-                                    <div class="col-5 content-left">
-                                        <span class="h4">Lote</span>
-                                    </div>
-                                    <div class="col-7">
-                                        <span class="h4">L01218052020</span>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div> -->
-
         <div class="col-md-6 col-sm-12">
             <div class="card h-100">
                 <div class="card-body">
@@ -69,15 +18,12 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-12">
-            <app-data-table #table [headers]="headers" [data]="data" [actions]="true"></app-data-table>
+        <div class="col-12 tabla">
+            <app-data-table #table [headers]="headers" [data]="data" [actions]="true" [placeholder]="'¡No se ha agregado ningún producto!'"></app-data-table>
         </div>
     </div>
 
     <div class="row mt-3 operations">
-        <!-- <div class="col-sm-12 col-md-6">
-            <button [disabled]="loading" class="btn btn-danger btn-lg w-100 p-4 mb-3" routerLink="..">Cancelar</button>
-        </div> -->
         <div class="col-sm-12 col-md-12">
             <button [disabled]="loading" class="btn btn-info btn-lg w-100 p-4 mb-3" (click)="confirmReception()">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm spinner-big" role="status " aria-hidden="true "></span>
