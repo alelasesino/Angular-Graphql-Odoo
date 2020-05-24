@@ -1,4 +1,4 @@
-<div class="table-wrapper-scroll-y table-responsive tabla">
+<div class="table-wrapper-scroll-y table-responsive h-100 tabla">
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -16,6 +16,9 @@
             </tr>
         </thead>
         <tbody>
+
+            <p *ngIf="datas.length <= 0" class="h2 text-muted placeholder">{{placeholder}}</p>
+
             <tr *ngFor="let country of countries; let i = index">
 
                 <td *ngFor="let key of objectKeys(header_columns)">{{country[key]}}</td>

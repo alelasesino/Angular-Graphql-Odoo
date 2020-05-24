@@ -19,8 +19,10 @@
 //     -ms-transform: rotate(180deg);
 // }
 .tabla {
-    height: 652px;
     font-size: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    border-right: 1px solid rgba(0, 0, 0, .125);
+    border-left: 1px solid rgba(0, 0, 0, .125);
 }
 
 .action {
@@ -30,4 +32,11 @@
 
 .action-column {
     text-align: center;
+}
+
+.placeholder {
+    text-align: center;
+    width: 100%;
+    top: 50%;
+    position: absolute;
 }

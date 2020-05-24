@@ -90,6 +90,7 @@ export class DataTableComponent implements OnInit {
   @Input('headers') header_columns;
   @Input('data') datas = [];
   @Input('actions') actions: boolean;
+  @Input('placeholder') placeholder: string = "¡No hay datos!";
 
   ngOnInit(): void {
 
