@@ -14,9 +14,9 @@ export class AuthService {
 
     const body = {
       "params":{
-      "login": username, //"alejperez99@hotmail.com",
-      "password": password, //"odoo",
-      "db":"NoDemoDB1"
+      login: username, //"alejperez99@hotmail.com",
+      password, //"odoo",
+      db: "NoDemoDB1"
       }
     };
 
