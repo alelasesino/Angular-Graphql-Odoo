@@ -5,6 +5,22 @@
 
 // regular style toast 
 @import '~ngx-toastr/toastr.css';
+.toast-container {
+    width: 40%;
+}
+
+.toast-container .ngx-toastr {
+    width: 100%;
+}
+
+.toast-title {
+    font-size: 1.8em;
+}
+
+.toast-message {
+    font-size: 1.2em;
+}
+
 html,
 body {
     height: 100%;
