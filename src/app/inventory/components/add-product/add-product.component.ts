@@ -42,7 +42,7 @@ export class AddProductComponent implements OnInit {
 
       } catch(err) {}
 
-    });
+    }, error => this.loading = false);
 
   }
 
