@@ -6,24 +6,22 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ToastService {
 
-  private TIME_OUT = 3000;
-
   constructor(private toast: ToastrService) { }
   
   showSuccess(message, title){
-      this.toast.success(message, title, {timeOut: this.TIME_OUT})
+      this.toast.success(message, title);
   }
   
   showError(message, title){
-      this.toast.error(message, title, {timeOut: this.TIME_OUT})
+      this.toast.error(message, title);
   }
   
   showInfo(message, title){
-      this.toast.info(message, title, {timeOut: this.TIME_OUT})
+      this.toast.info(message, title);
   }
   
   showWarning(message, title){
-      this.toast.warning(message, title, {timeOut: this.TIME_OUT})
+      this.toast.warning(message, title);
   }
 
 }
