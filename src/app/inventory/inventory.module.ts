@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 import { InventoryRoutingModule } from './inventory-routing.module';
 
 import { ReceptionComponent } from './components/reception/reception.component';
@@ -30,9 +28,7 @@ import { KeypadModalComponent } from './components/keypad-modal/keypad-modal.com
   imports: [
     CommonModule,
     InventoryRoutingModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    NgbModule
   ],
   entryComponents:[ModalContentComponent, KeypadModalComponent]
 })
