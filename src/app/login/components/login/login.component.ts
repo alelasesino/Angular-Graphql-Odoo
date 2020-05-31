@@ -38,13 +38,13 @@ export class LoginComponent implements OnInit {
       this.loading = loading;
 
       if(error){
-        this.error_message = "¡Usuario/Contraseña incorrecta!";
+          this.error_message = "¡Usuario/Contraseña incorrecta!";
       } else {
         localStorage.setItem('logged', 'true');
         this.router.navigate(['/menu']);
       }
 
-    });
+    }, error => this.loading = false);
 
   }
 
