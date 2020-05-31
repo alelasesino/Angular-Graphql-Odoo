@@ -25,18 +25,60 @@
     border-left: 1px solid rgba(0, 0, 0, .125);
 }
 
-.action {
-    width: 12%;
-    text-align: center;
-}
-
-.action-column {
-    text-align: center;
-}
-
 .placeholder {
     text-align: center;
     width: 100%;
     top: 50%;
     position: absolute;
+}
+
+// .footer {
+//     border: 1px solid rgba(0, 0, 0, .125);
+//     background-color: rgba(0, 0, 0, .07);
+//     margin-top: .3%;
+// }
+.table-fixed tbody {
+    // height: 300px;
+    height: 80%;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tfoot,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+    display: block;
+}
+
+.table-fixed tbody td,
+.table-fixed tbody th,
+.table-fixed thead>tr>th {
+    float: left;
+    position: relative;
+    &::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+
+.table-fixed tfoot>tr>th {
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.table-fixed tfoot>tr>th {
+    float: left;
+    position: relative;
+    &::after {
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+
+.row {
+    margin: 0;
 }
