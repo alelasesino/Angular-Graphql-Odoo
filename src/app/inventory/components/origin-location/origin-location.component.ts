@@ -37,7 +37,7 @@ export class OriginLocationComponent implements OnDestroy {
 
       } catch(err) {}
 
-    });
+    }, error => this.loading = false);
 
   }
 
