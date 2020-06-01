@@ -1,9 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
-
-/* You can add global styles to this file, and also import other style files */
-
-// regular style toast 
+// ***** NGX-TOASTR ***** //
 @import '~ngx-toastr/toastr.css';
 .toast-container {
     width: 35%;
@@ -21,6 +16,8 @@
     font-size: 1.2em;
 }
 
+// *********************** //
+// ******* GENERAL ******* //
 html,
 body {
     height: 100%;
@@ -33,3 +30,43 @@ body {
     outline: none !important;
     box-shadow: none;
 }
+
+//****** NGX-DATATABLE ******//
+.ngx-datatable.bootstrap .datatable-header .datatable-header-cell {
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.ngx-datatable.scroll-vertical .datatable-body {
+    overflow-x: hidden;
+    font-size: 1.8em;
+}
+
+.ngx-datatable.bootstrap .datatable-footer {
+    background-color: white;
+    border-color: white;
+    color: black;
+    border-top: 1px solid rgba(0, 0, 0, .125);
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.ngx-datatable.bootstrap {
+    overflow: visible;
+}
+
+.fixed-header .visible {
+    border: 1px solid rgba(0, 0, 0, .125);
+} 
+
+.empty-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 500;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.733);
+}
+
+// ************************* //

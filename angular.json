@@ -28,6 +28,8 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "node_modules/@swimlane/ngx-datatable/assets/icons.css",
+                            "node_modules/@swimlane/ngx-datatable/themes/bootstrap.css",
                             "src/styles.scss"
                         ],
                         "scripts": []
