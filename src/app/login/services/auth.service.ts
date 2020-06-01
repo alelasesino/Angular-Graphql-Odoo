@@ -14,6 +14,10 @@ export class AuthService {
 
     const path = '/web/session/authenticate';
 
+    const headers = {
+      headers: {'Content-Type':'application/json; charset=utf-8'}
+    }
+
     const body = {
       "params":{
       login: username, //"alejperez99@hotmail.com",
@@ -22,7 +26,7 @@ export class AuthService {
       }
     };
 
-    return this.http.post<any>(path, body).pipe(
+    return this.http.post<any>(path, body, headers).pipe(
       
       timeout(5000), catchError(err => {
 
