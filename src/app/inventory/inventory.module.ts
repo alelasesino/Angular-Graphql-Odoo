@@ -11,7 +11,7 @@ import { RegisterReceptionComponent } from './components/register-reception/regi
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { KeypadModalComponent } from './components/keypad-modal/keypad-modal.component';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { KeypadModalComponent } from './components/keypad-modal/keypad-modal.com
   imports: [
     CommonModule,
     InventoryRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxDatatableModule
   ],
   entryComponents:[ModalContentComponent, KeypadModalComponent]
 })
