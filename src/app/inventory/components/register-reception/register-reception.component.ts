@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'apollo-link';
 import { DataTableComponent } from '../data-table/data-table.component';
@@ -11,48 +11,49 @@ import { ToastService } from 'src/app/inventory/services/toast.service';
   templateUrl: './register-reception.component.html',
   styleUrls: ['./register-reception.component.scss']
 })
-export class RegisterReceptionComponent implements OnInit {
-
-  @ViewChild('table', {static : true}) table: DataTableComponent;
+export class RegisterReceptionComponent {
 
   private loading: boolean;
-  private headers: object = {code: 'Referencia', displayName: 'Articulo', lot: 'Lote', quantity: 'Cantidad'};
-  private data = [
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'},
-    {id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1', quantity: '251'},
-    {id: 2, code: '4 KG GRANEL', displayName: 'Caja de granel2', quantity: '251'},
-    {id: 3, code: '4 KG GRANEL', displayName: 'Caja de granel3', quantity: '251'}
+  private rows = [
+    // {index: 0, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel34', quantity: '251'},
+    // {index: 1, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel23', quantity: '251'},
+    // {index: 2, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel24', quantity: '251'},
+    // {index: 3, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel53', quantity: '251'},
+    // {index: 4, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel12', quantity: '251'},
+    // {index: 5, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel135', quantity: '251'},
+    // {index: 6, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1325', quantity: '251'},
+    // {index: 7, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel178', quantity: '251'}
+
   ]
 
-  state: any;
-
-  constructor(private service: RegisterReceptionService, private router: Router, private toast: ToastService) { }
-
-  ngOnInit() {
-
-    //console.log(window.history.state);
-
+  private messages = {
+    emptyMessage: "¡No se ha agregado ningún producto!"
   }
 
+  @ViewChild("datatable", { static: true }) datatable;
+  private index: number = 0;
+  private addedItem: boolean;
+
+  constructor(private service: RegisterReceptionService, private router: Router, private toast: ToastService, private elementRef: ElementRef) { }
+
   onAddedProduct(product){
-    this.table.addItem(product);
+    product.index = this.index++;
+    this.rows.push(product);
+    this.rows = [...this.rows]
+    this.addedItem = true;
+  }
+
+  removeItem(row){
+    this.rows = this.rows.filter((element) => element.index != row.index);
+  }
+
+  ngAfterViewChecked(){
+
+    if(this.addedItem){
+        document.querySelector('.datatable-body').scrollBy(0, 10000);
+        this.addedItem = false;
+    }
+
   }
 
   confirmReception(){
@@ -98,7 +99,7 @@ export class RegisterReceptionComponent implements OnInit {
 
     const products = [];
 
-    this.data.forEach(element => {
+    this.rows.forEach(element => {
       
       products.push({id: element.id, lot: "255", quantity: Number(element.quantity)});
 
@@ -107,5 +108,23 @@ export class RegisterReceptionComponent implements OnInit {
     return products;
 
   }
+
+  columns
+
+  adjustColumnMinWidth() {
+    const element = this.elementRef.nativeElement as HTMLElement;
+    const rows = element.getElementsByTagName("datatable-body-row");
+    for (let i = 0; i < rows.length; i++) {
+      const cells = rows[i].getElementsByTagName("datatable-body-cell");
+      for (let k = 0; k < cells.length; k++) {
+        const cell = cells[k];
+        const cellSizer = cell.children[0].children[0] as HTMLElement;
+        const sizerWidth = cellSizer.getBoundingClientRect().width;
+        if (30 < sizerWidth) {
+          //this.columns[k].minWidth = sizerWidth;
+        }
+      }
+    }
+}
 
 }
