@@ -9,7 +9,6 @@ import { LoginModule } from './login/login.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuModule } from './menu/menu.module';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MenuModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({timeOut: 100000, extendedTimeOut: 100000, tapToDismiss:false}),
-    NgxDatatableModule
+    ToastrModule.forRoot({timeOut: 2200})
   ],
   providers: [],
   bootstrap: [AppComponent]
