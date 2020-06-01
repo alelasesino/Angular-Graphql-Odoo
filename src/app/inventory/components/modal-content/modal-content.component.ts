@@ -9,11 +9,14 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalContentComponent implements OnInit {
 
   @Input() public datas: object[];
-  @Input() public config: object;
+  @Input() public config: {
+    title: string
+    display_name: string
+  };
 
-  private hasImage: boolean;
+  hasImage: boolean;
 
-  constructor(private activeModal: NgbActiveModal) { 
+  constructor(public activeModal: NgbActiveModal) { 
 
     this.config = {
       title: 'Titulo',

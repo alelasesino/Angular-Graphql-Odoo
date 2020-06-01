@@ -15,7 +15,7 @@ export class AddProductComponent implements OnInit {
   @Output('added') added_product = new EventEmitter<object>();
 
   private sub: Subscription;
-  private loading: boolean;
+  loading: boolean;
 
   constructor(private inventoryService: InventoryService, private modalService: NgbModal) { }
 

@@ -13,8 +13,8 @@ import { ToastService } from 'src/app/inventory/services/toast.service';
 })
 export class RegisterReceptionComponent {
 
-  private loading: boolean;
-  private rows = [
+  loading: boolean;
+  rows = [
     // {index: 0, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel34', quantity: '251'},
     // {index: 1, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel23', quantity: '251'},
     // {index: 2, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel24', quantity: '251'},
@@ -26,7 +26,7 @@ export class RegisterReceptionComponent {
 
   ]
 
-  private messages = {
+  messages = {
     emptyMessage: "¡No se ha agregado ningún producto!"
   }
 

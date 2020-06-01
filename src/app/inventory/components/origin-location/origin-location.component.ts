@@ -13,8 +13,8 @@ export class OriginLocationComponent implements OnDestroy {
 
   @Output('origin') output = new EventEmitter<string>();
 
-  private loading: boolean;
-  private button_label: string = "Seleccionar ubicación origen";
+  loading: boolean;
+  button_label: string = "Seleccionar ubicación origen";
   private sub;
 
   constructor(private lotService: LotService, private inventoryService: InventoryService, private modalService: NgbModal) { }

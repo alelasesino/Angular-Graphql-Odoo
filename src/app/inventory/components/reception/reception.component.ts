@@ -10,9 +10,9 @@ import { InventoryService } from '../../services/inventory.service';
 })
 export class ReceptionComponent {
 
-  private headers: object = {code: 'Referencia', display_name: 'Articulo', time: 'Hora', quantity: 'Cantidad'};
+  headers: object = {code: 'Referencia', display_name: 'Articulo', time: 'Hora', quantity: 'Cantidad'};
   private lot: string = "LOTE: L01052403";
-  private data = [
+  data = [
     //{id: 3, code: '4 KG GRANEL', display_name: 'Caja de granel3', time: '18:00', quantity: '251'}
   ]
 

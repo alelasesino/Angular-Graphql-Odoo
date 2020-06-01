@@ -83,8 +83,8 @@ export class NgbdSortableHeader {
 export class DataTableComponent implements OnInit {
 
   private addedItem: boolean;
-  private countries;
-  private objectKeys = Object.keys;
+  countries;
+  objectKeys = Object.keys;
 
   @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
   @Input('headers') header_columns;
