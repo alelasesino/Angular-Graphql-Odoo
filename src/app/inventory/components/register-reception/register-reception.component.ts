@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'apollo-link';
-import { DataTableComponent } from '../data-table/data-table.component';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterReceptionService } from '../../services/register-reception.service';
 import { timeout, catchError } from 'rxjs/operators';
 import { ToastService } from 'src/app/inventory/services/toast.service';
@@ -23,7 +21,6 @@ export class RegisterReceptionComponent {
     // {index: 5, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel135', quantity: '251'},
     // {index: 6, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel1325', quantity: '251'},
     // {index: 7, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel178', quantity: '251'}
-
   ]
 
   messages = {
@@ -32,11 +29,10 @@ export class RegisterReceptionComponent {
 
   totalQuantity: number = 0;
 
-  @ViewChild("datatable", { static: true }) datatable;
   private index: number = 0;
   private addedItem: boolean;
 
-  constructor(private service: RegisterReceptionService, private router: Router, private toast: ToastService, private elementRef: ElementRef) { }
+  constructor(private service: RegisterReceptionService, private router: Router, private toast: ToastService) { }
 
   onAddedProduct(product){
     product.index = this.index++;
@@ -64,7 +60,7 @@ export class RegisterReceptionComponent {
 
     const reception = {
       farm_id: 31,
-      products: this.getProducts()
+      products: this.getProductsFromTable()
     };
 
     this.loading = true;
@@ -99,7 +95,7 @@ export class RegisterReceptionComponent {
 
   }
 
-  private getProducts(){
+  private getProductsFromTable(){
 
     const products = [];
 
