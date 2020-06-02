@@ -12,6 +12,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { KeypadModalComponent } from './components/keypad-modal/keypad-modal.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,16 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgbModule,
     NgxDatatableModule
   ],
-  entryComponents:[ModalContentComponent, KeypadModalComponent]
+  entryComponents:[
+    ModalContentComponent, 
+    KeypadModalComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }
+  ]
 })
 export class InventoryModule { }
