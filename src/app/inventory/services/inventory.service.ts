@@ -14,6 +14,40 @@ export class InventoryService {
 
   constructor(private apollo: Apollo, private toast: ToastService) { }
   
+  public getFarmsAndProducts(){
+    
+    const FARM_PRODUCTS_QUERY = gql`
+    {
+      products {
+        id
+        displayName
+        code
+        barcode
+        categId
+        image
+      }
+      farms {
+        id
+        name
+        createDate
+        description
+        code
+        partnerId
+        parcels {
+          id
+          name
+          createDate
+          number
+          description
+        }
+      }
+    }        
+    `;
+
+    return this.doSimpleQuery(FARM_PRODUCTS_QUERY);
+
+  }
+
   public getFarms(){
     
     const FARM_QUERY = gql`
@@ -43,7 +77,7 @@ export class InventoryService {
   public getProducts(){
 
     const PRODUCT_QUERY = gql`
-    query Products {
+    {
       products {
         id
         displayName
@@ -104,6 +138,7 @@ export class InventoryService {
       timeout(this.TIME_OUT), catchError(err => {
 
         this.showConnectionError();
+        console.log(err);
         throw new Error('Error Connection'); 
 
       })
