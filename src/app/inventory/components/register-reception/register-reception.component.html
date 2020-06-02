@@ -67,11 +67,8 @@
                     <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
         
                         <div class="row h-100 w-100 align-middle">
-                            <div class="col"></div>
-                            <div class="col"></div>
-                            <div class="col" style="display: flex; align-items: center; justify-content: center; padding-bottom: 15px;">Cantidad Total:</div>
-                            <div class="col" style="display: flex; align-items: center; justify-content: center; padding-bottom: 15px;">{{totalQuantity}}</div>
-                            <div class="col"></div>
+                            <div class="col-8" style="line-height: 270%; text-align: right;">Cantidad Total:</div>
+                            <div class="col-4" style="line-height: 270%; text-align: left;">{{totalQuantity}}</div>
                         </div>
         
                     </ng-template>
