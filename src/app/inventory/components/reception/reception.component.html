@@ -9,7 +9,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-secondary btn-lg btn-block" (click)="navigateToRegister()">Registrar recepción</button>
+                    <button class="btn btn-secondary btn-lg btn-block register" (click)="navigateToRegister()">Registrar recepción</button>
                 </div>
             </div>
         </div>
@@ -18,7 +18,57 @@
 
     <div class="row">
         <div class="col-12 tabla">
-            <app-data-table [headers]="headers" [data]="data" [placeholder]="'¡No se ha registrado ninguna recepción hoy!'"></app-data-table>
+            <ngx-datatable #datatable class="bootstrap" style="height: 735px;"
+            [messages]="messages"
+            [rows]="rows"
+            columnMode="force"
+            [headerHeight]="50"
+            [footerHeight]="63"
+            [rowHeight]="'auto'"
+            [scrollbarV]="true"
+            [virtualization]="false"
+            [loadingIndicator]="false">
+        
+                <ngx-datatable-column name="Referencia" prop="code" [width]="-50" [draggable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.code}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Articulo" [width]="450" prop="displayName" [draggable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.displayName}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Hora" [width]="-150" prop="time" [draggable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.time}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Cantidad" prop="quantity" [width]="-200" [draggable]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        {{row.quantity}}
+                    </ng-template>
+                </ngx-datatable-column>
+        
+                <ngx-datatable-footer>
+                    <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
+        
+                        <div class="row h-100 w-100 align-middle">
+                            <div class="col-9" style="line-height: 270%; padding-left: 50px;">
+                                <ng-container *ngIf="lot">
+                                    Lote: {{lot}}
+                                </ng-container>
+                            </div>
+                            <div class="col-3" style="line-height: 270%;">Total: {{totalQuantity}}</div>
+                        </div>
+        
+                    </ng-template>
+                </ngx-datatable-footer>
+        
+            </ngx-datatable>
         </div>
     </div>
 </div>
