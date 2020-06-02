@@ -19,9 +19,7 @@
 
     <div class="row mt-3">
         <div class="col-12">
-            <!-- <app-data-table #table [headers]="headers" [data]="data" [actions]="true" [placeholder]="'¡No se ha agregado ningún producto!'"></app-data-table> -->
             <ngx-datatable #datatable class="bootstrap" style="height: 622px;"
-            (cdkObserveContent)="adjustColumnMinWidth()"
             [messages]="messages"
             [rows]="rows"
             columnMode="force"
@@ -38,25 +36,25 @@
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Articulo" [width]="100" prop="displayName" [draggable]="false">
+                <ngx-datatable-column name="Articulo" [width]="250" prop="displayName" [draggable]="false">
                     <ng-template let-row="row" ngx-datatable-cell-template>
                         {{row.displayName}}
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Lote" [width]="10" [draggable]="false">
+                <ngx-datatable-column name="Lote" [width]="-150" [draggable]="false">
                     <ng-template let-row="row" ngx-datatable-cell-template>
-                        L-01010602
+                        {{row.lot}}
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Cantidad" prop="quantity" [width]="10" [draggable]="false">
+                <ngx-datatable-column name="Cantidad" prop="quantity" [width]="-200" [draggable]="false">
                     <ng-template let-row="row" ngx-datatable-cell-template>
                         {{row.quantity}}
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Acciones" [width]="10" [resizeable]="false" [draggable]="false">
+                <ngx-datatable-column name="Acciones" [width]="-50" [resizeable]="false" [draggable]="false">
                     <!-- <ng-template ngx-datatable-header-template>
                         Actions
                     </ng-template> -->
@@ -72,7 +70,7 @@
                             <div class="col"></div>
                             <div class="col"></div>
                             <div class="col" style="display: flex; align-items: center; justify-content: center; padding-bottom: 15px;">Cantidad Total:</div>
-                            <div class="col" style="display: flex; align-items: center; justify-content: center; padding-bottom: 15px;">165</div>
+                            <div class="col" style="display: flex; align-items: center; justify-content: center; padding-bottom: 15px;">{{totalQuantity}}</div>
                             <div class="col"></div>
                         </div>
         

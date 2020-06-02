@@ -30,6 +30,8 @@ export class RegisterReceptionComponent {
     emptyMessage: "¡No se ha agregado ningún producto!"
   }
 
+  totalQuantity: number;
+
   @ViewChild("datatable", { static: true }) datatable;
   private index: number = 0;
   private addedItem: boolean;
@@ -39,12 +41,14 @@ export class RegisterReceptionComponent {
   onAddedProduct(product){
     product.index = this.index++;
     this.rows.push(product);
-    this.rows = [...this.rows]
+    this.rows = [...this.rows];
     this.addedItem = true;
+    this.calculateTotalQuantity();
   }
 
   removeItem(row){
     this.rows = this.rows.filter((element) => element.index != row.index);
+    this.calculateTotalQuantity();
   }
 
   ngAfterViewChecked(){
@@ -54,6 +58,15 @@ export class RegisterReceptionComponent {
         this.addedItem = false;
     }
 
+  }
+
+  calculateTotalQuantity() {
+    this.totalQuantity = 0;
+    this.rows.forEach(row => {
+      console.log(row.quantity);
+      this.totalQuantity += row.quantity
+    });
+    console.log("TOTAL:", this.totalQuantity);
   }
 
   confirmReception(){
@@ -101,7 +114,7 @@ export class RegisterReceptionComponent {
 
     this.rows.forEach(element => {
       
-      products.push({id: element.id, lot: "255", quantity: Number(element.quantity)});
+      products.push({id: element.id, lot: element.lot, quantity: Number(element.quantity)});
 
     });
 
@@ -110,21 +123,5 @@ export class RegisterReceptionComponent {
   }
 
   columns
-
-  adjustColumnMinWidth() {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    const rows = element.getElementsByTagName("datatable-body-row");
-    for (let i = 0; i < rows.length; i++) {
-      const cells = rows[i].getElementsByTagName("datatable-body-cell");
-      for (let k = 0; k < cells.length; k++) {
-        const cell = cells[k];
-        const cellSizer = cell.children[0].children[0] as HTMLElement;
-        const sizerWidth = cellSizer.getBoundingClientRect().width;
-        if (30 < sizerWidth) {
-          //this.columns[k].minWidth = sizerWidth;
-        }
-      }
-    }
-}
 
 }
