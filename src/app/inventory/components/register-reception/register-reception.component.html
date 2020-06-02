@@ -54,7 +54,7 @@
                     </ng-template>
                 </ngx-datatable-column>
 
-                <ngx-datatable-column name="Acciones" [width]="-50" [resizeable]="false" [draggable]="false">
+                <ngx-datatable-column [width]="-50" [resizeable]="false" [draggable]="false">
                     <!-- <ng-template ngx-datatable-header-template>
                         Actions
                     </ng-template> -->
@@ -67,8 +67,7 @@
                     <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
         
                         <div class="row h-100 w-100 align-middle">
-                            <div class="col-8" style="line-height: 270%; text-align: right;">Cantidad Total:</div>
-                            <div class="col-4" style="line-height: 270%; text-align: left;">{{totalQuantity}}</div>
+                            <div class="col" style="line-height: 270%; padding-left: 65%;">Total: {{totalQuantity}}</div>
                         </div>
         
                     </ng-template>
