@@ -26,16 +26,7 @@ export class AuthService {
       }
     };
 
-    return this.http.post<any>(path, body, headers).pipe(
-      
-      timeout(5000), catchError(err => {
-
-        this.toast.showError("No se ha podido establecer conexión con el servidor", "Error Conexión");
-        throw new Error('Error Connection'); 
-
-      })
-
-    );
+    return this.http.post<any>(path, body, headers);
 
   }
 
