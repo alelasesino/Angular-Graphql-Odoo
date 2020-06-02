@@ -30,7 +30,7 @@ export class RegisterReceptionComponent {
     emptyMessage: "¡No se ha agregado ningún producto!"
   }
 
-  totalQuantity: number;
+  totalQuantity: number = 0;
 
   @ViewChild("datatable", { static: true }) datatable;
   private index: number = 0;
@@ -43,12 +43,12 @@ export class RegisterReceptionComponent {
     this.rows.push(product);
     this.rows = [...this.rows];
     this.addedItem = true;
-    this.calculateTotalQuantity();
+    this.totalQuantity += product.quantity
   }
 
-  removeItem(row){
-    this.rows = this.rows.filter((element) => element.index != row.index);
-    this.calculateTotalQuantity();
+  removeItem(product){
+    this.rows = this.rows.filter((element) => element.index != product.index);
+    this.totalQuantity -= product.quantity
   }
 
   ngAfterViewChecked(){
@@ -58,15 +58,6 @@ export class RegisterReceptionComponent {
         this.addedItem = false;
     }
 
-  }
-
-  calculateTotalQuantity() {
-    this.totalQuantity = 0;
-    this.rows.forEach(row => {
-      console.log(row.quantity);
-      this.totalQuantity += row.quantity
-    });
-    console.log("TOTAL:", this.totalQuantity);
   }
 
   confirmReception(){
@@ -121,7 +112,5 @@ export class RegisterReceptionComponent {
     return products;
 
   }
-
-  columns
 
 }
