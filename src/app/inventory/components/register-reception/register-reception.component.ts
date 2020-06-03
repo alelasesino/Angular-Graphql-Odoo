@@ -65,7 +65,6 @@ export class RegisterReceptionComponent {
       };
 
       this.createReception(reception);
-      console.log("RECEPTION: ", reception);
 
   }
 
