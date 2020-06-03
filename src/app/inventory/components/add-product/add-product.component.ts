@@ -16,6 +16,7 @@ export class AddProductComponent implements OnInit {
   @Output('added') added_product = new EventEmitter<object>();
 
   private sub: Subscription;
+  private farm;
   loading: boolean;
 
   constructor(private lotService: LotService, private inventoryService: InventoryService, private modalService: NgbModal) { }
@@ -33,6 +34,9 @@ export class AddProductComponent implements OnInit {
 
       try {
         
+        if(!this.farm)
+          this.farm = await this.openModal({title: 'Fincas', display_name: 'name'}, result.data.farms);
+
         const product = this.clone(await this.openModal({title: 'Productos', display_name: 'code'}, result.data.products));
         const quantity = await this.openKeypad(product.display_name);
 
@@ -43,10 +47,9 @@ export class AddProductComponent implements OnInit {
 
           if(product.categId == 6) {
 
-            const farm = await this.openModal({title: 'Fincas', display_name: 'name'}, result.data.farms);
-            const parcel = await this.openModal({title: 'Parcelas', display_name: 'name'}, farm.parcels);
+            const parcel = await this.openModal({title: 'Parcelas', display_name: 'name'}, this.farm.parcels);
             
-            product.lot = this.lotService.getLot(farm.code, parcel.number);
+            product.lot = this.lotService.getLot(this.farm.code, parcel.number);
 
           }
           
