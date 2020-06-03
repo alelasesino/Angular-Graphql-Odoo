@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterReceptionService } from '../../services/register-reception.service';
 import { timeout, catchError } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { ToastService } from 'src/app/inventory/services/toast.service';
 })
 export class RegisterReceptionComponent {
 
+  @ViewChild('add_product', {static: false}) add_product;
   loading: boolean;
   rows = [
     // {index: 0, id: 1, code: '4 KG GRANEL', displayName: 'Caja de granel34', quantity: '251'},
@@ -58,30 +59,28 @@ export class RegisterReceptionComponent {
 
   confirmReception(){
 
-    const reception = {
-      farm_id: 31,
-      products: this.getProductsFromTable()
-    };
+      const reception = {
+        farmId: this.add_product.farm.id,
+        products: this.getProductsFromTable()
+      };
+
+      this.createReception(reception);
+      console.log("RECEPTION: ", reception);
+
+  }
+
+  private createReception(reception) {
 
     this.loading = true;
 
-    this.service.mutate({reception}).pipe(
-
-      timeout(5000), catchError(err => {
-
-        this.toast.showError("No se ha podido establecer conexión con el servidor", "Error Conexión");
-        throw new Error('Error Connection'); 
-
-      })
-
-    ).subscribe(result => {
+    this.service.mutate({reception}).subscribe(result => {
 
       this.loading = false;
 
       if(result.errors){
         
         result.errors.forEach(error => {
-          console.error(error)
+          console.error(error);
         });
         
       } else {
@@ -101,7 +100,12 @@ export class RegisterReceptionComponent {
 
     this.rows.forEach(element => {
       
-      products.push({id: element.id, lot: element.lot, quantity: Number(element.quantity)});
+      let product = {id: element.id, quantity: Number(element.quantity)}
+
+      if(element.lot)
+        product["lot"] = element.lot
+
+      products.push(product);
 
     });
 
