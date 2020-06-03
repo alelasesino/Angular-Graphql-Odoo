@@ -11,13 +11,13 @@ export class RegisterReceptionService extends Mutation {
   mutation($reception: InputReception!){
     createReception(reception: $reception){
       id
-      display_name
-      scheduled_date
-      receive_from
+      displayName
+      scheduledDate
+      receiveFrom
       time
-      receive_products{
+      receiveProducts{
         id
-        display_name
+        displayName
         kilos
         lote
       }
