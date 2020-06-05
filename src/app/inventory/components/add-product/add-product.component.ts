@@ -34,11 +34,15 @@ export class AddProductComponent implements OnInit {
 
       try {
         
+        let farm;
+
         if(!this.farm)
-          this.farm = await this.openModal({title: 'Fincas', display_name: 'name'}, result.data.farms);
+          farm = await this.openModal({title: 'Fincas', display_name: 'name'}, result.data.farms);
+        else
+          farm = this.farm;
 
         const product = this.clone(await this.openModal({title: 'Productos', display_name: 'code'}, result.data.products));
-        const quantity = await this.openKeypad(product.display_name);
+        const quantity = await this.openKeypad(product.displayName);
 
         delete product.image
         product.quantity = quantity;
@@ -47,19 +51,23 @@ export class AddProductComponent implements OnInit {
 
           if(product.categId == 6) {
 
-            const parcel = await this.openModal({title: 'Parcelas', display_name: 'name'}, this.farm.parcels);
+            const parcel = await this.openModal({title: 'Parcelas', display_name: 'name'}, farm.parcels);
             
-            product.lot = this.lotService.getLot(this.farm.code, parcel.number);
+            product.lot = this.lotService.getLot(farm.code, parcel.number);
 
           }
           
+          this.farm = farm;
           this.added_product.emit(product);
 
         }
 
       } catch(err) {}
 
-    }, error => this.loading = false);
+    }, error => {
+      console.log(error);
+      this.loading = false
+    });
 
   }
 
