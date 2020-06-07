@@ -1,89 +1,104 @@
 <div class="container-fluid h-100" style="overflow: hidden;">
 
-    <div class="row mt-3">
-        <div class="col-md-6 col-sm-12">
-            <div class="card h-100">
-                <div class="card-body">
-                    <button [disabled]="loading" class="btn btn-danger btn-lg btn-block cancel" routerLink="..">
-                        Cancelar
+<div class="row h-100" style="margin: 15px 0 15px 0;">
+    
+    
+    
+        <div class="w-100" style="height: 15%;">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <button [disabled]="loading" class="btn btn-danger btn-lg btn-block cancel" routerLink="..">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-md-6 col-sm-12">
+                    <app-add-product #add_product (added)="onAddedProduct($event)"></app-add-product>
+                </div>
+        
+            </div>
+        </div>
+    
+        <div class="w-100" style="height: 66%;">
+            <div class="row h-100">
+                <div class="col-12">
+                    <ngx-datatable #datatable class="bootstrap h-100" 
+                    [messages]="messages"
+                    [rows]="rows"
+                    columnMode="force"
+                    [headerHeight]="50"
+                    [footerHeight]="63"
+                    [rowHeight]="'auto'"
+                    [scrollbarV]="true"
+                    [virtualization]="false"
+                    [loadingIndicator]="false">
+                
+                        <ngx-datatable-column name="Referencia" prop="code" [width]="10" [draggable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{row.code}}
+                            </ng-template>
+                        </ngx-datatable-column>
+        
+                        <ngx-datatable-column name="Articulo" [width]="250" prop="displayName" [draggable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{row.displayName}}
+                            </ng-template>
+                        </ngx-datatable-column>
+        
+                        <ngx-datatable-column name="Lote" [width]="-150" [draggable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{row.lot}}
+                            </ng-template>
+                        </ngx-datatable-column>
+        
+                        <ngx-datatable-column name="Cantidad" prop="quantity" [width]="-200" [draggable]="false">
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                {{row.quantity}}
+                            </ng-template>
+                        </ngx-datatable-column>
+        
+                        <ngx-datatable-column [width]="-50" [resizeable]="false" [draggable]="false">
+                            <!-- <ng-template ngx-datatable-header-template>
+                                Actions
+                            </ng-template> -->
+                            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                                <button (click)="removeItem(row)" class="btn btn-danger btn-lg btn-block">Eliminar</button>
+                            </ng-template>
+                        </ngx-datatable-column>
+                
+                        <ngx-datatable-footer>
+                            <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
+                
+                                <div class="row h-100 w-100 align-middle">
+                                    <div class="col" style="line-height: 270%; padding-left: 65%;">Total: {{totalQuantity}}</div>
+                                </div>
+                
+                            </ng-template>
+                        </ngx-datatable-footer>
+                
+                    </ngx-datatable>
+                </div>
+            </div>
+        </div>
+    
+        <div class="w-100" style="height: 15%;">
+            <div class="row operations">
+                <div class="col">
+                    <button [disabled]="loading || rows.length <= 0" class="btn btn-info btn-lg w-100 p-4 mb-3 confirm" (click)="confirmReception()">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm spinner-big" role="status " aria-hidden="true "></span>
+                        Confirmar
                     </button>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-6 col-sm-12">
-            <app-add-product #add_product (added)="onAddedProduct($event)"></app-add-product>
-        </div>
-
+    
+    
+    
+    
+        
     </div>
-
-    <div class="row mt-3">
-        <div class="col-12">
-            <ngx-datatable #datatable class="bootstrap" style="height: 622px;"
-            [messages]="messages"
-            [rows]="rows"
-            columnMode="force"
-            [headerHeight]="50"
-            [footerHeight]="63"
-            [rowHeight]="'auto'"
-            [scrollbarV]="true"
-            [virtualization]="false"
-            [loadingIndicator]="false">
-        
-                <ngx-datatable-column name="Referencia" prop="code" [width]="10" [draggable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        {{row.code}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column name="Articulo" [width]="250" prop="displayName" [draggable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        {{row.displayName}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column name="Lote" [width]="-150" [draggable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        {{row.lot}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column name="Cantidad" prop="quantity" [width]="-200" [draggable]="false">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        {{row.quantity}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column [width]="-50" [resizeable]="false" [draggable]="false">
-                    <!-- <ng-template ngx-datatable-header-template>
-                        Actions
-                    </ng-template> -->
-                    <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
-                        <button (click)="removeItem(row)" class="btn btn-danger btn-lg btn-block">Eliminar</button>
-                    </ng-template>
-                </ngx-datatable-column>
-        
-                <ngx-datatable-footer>
-                    <ng-template ngx-datatable-footer-template let-rowCount="rowCount">
-        
-                        <div class="row h-100 w-100 align-middle">
-                            <div class="col" style="line-height: 270%; padding-left: 65%;">Total: {{totalQuantity}}</div>
-                        </div>
-        
-                    </ng-template>
-                </ngx-datatable-footer>
-        
-            </ngx-datatable>
-        </div>
-    </div>
-
-    <div class="row mt-3 operations">
-        <div class="col-sm-12 col-md-12">
-            <button [disabled]="loading || rows.length <= 0" class="btn btn-info btn-lg w-100 p-4 mb-3 confirm" (click)="confirmReception()">
-                <span *ngIf="loading" class="spinner-border spinner-border-sm spinner-big" role="status " aria-hidden="true "></span>
-                Confirmar
-            </button>
-        </div>
-    </div>
-
 </div>
