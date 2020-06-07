@@ -10,4 +10,6 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 > Navegación por la aplicación web.
 
-![Preview](./screenshots/preview.gif)
+<p align="center">
+  <img src="./screenshots/preview.gif">
+</p>
