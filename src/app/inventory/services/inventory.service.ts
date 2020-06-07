@@ -93,29 +93,9 @@ export class InventoryService {
 
   public getReceptions(lot: string){
 
-    // const RECEPTION_QUERY = gql`
-    // query Receptions($today: Boolean, $lot: String) {
-    //   receptions(today: $today, lot: $lot) {
-    //     id
-    //     displayName
-    //     scheduledDate
-    //     receiveFrom
-    //     time
-    //     receiveProducts {
-    //       id
-    //       code
-    //       displayName
-    //       kilos
-    //       lote
-    //     }
-    //   }
-    // }         
-    // `;
-
     const RECEPTION_QUERY = gql`
-    query Receptions {
-      receptions(today: false) {
-        id
+    query Receptions($today: Boolean, $lot: String) {
+      receptions(today: $today, lot: $lot) {
         displayName
         scheduledDate
         receiveFrom
@@ -127,7 +107,7 @@ export class InventoryService {
           lote
         }
       }
-    }             
+    }         
     `;
 
     this.query = this.apollo.watchQuery({query: RECEPTION_QUERY, variables: {today: false, lot}});
