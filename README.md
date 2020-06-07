@@ -14,7 +14,7 @@ Ejecuta el comando `npm start` para levantar un servidor de desarrollo. Dirígit
 
 ### Configuración Proxy
 
-Será necesario cambiar las propiedades `target` hacia la IP del servidor donde se encuentra alojado Odoo en el fichero `proxy.conf.json`.
+Será necesario realizar algunos cambios en el fichero `proxy.conf.json`. Cambie las propiedades `target` hacia la IP del servidor donde se encuentra alojado Odoo.
 
 ```json
 {
