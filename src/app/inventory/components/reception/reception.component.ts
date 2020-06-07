@@ -28,8 +28,10 @@ export class ReceptionComponent {
   refreshReceptionTable(lot) {
     
     this.lot = lot
+    
+    const sub = this.service.getReceptions(lot).subscribe(result => {
 
-    this.service.getReceptions(lot).subscribe(result => {
+      this.rows.length = 0;
       
       result.data.receptions.forEach(reception => {
 
@@ -45,6 +47,7 @@ export class ReceptionComponent {
 
       this.rows = [...this.rows];
       this.calculateTotalQuantity();
+      sub.unsubscribe();
 
     });
 
